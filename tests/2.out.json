@@ -1,0 +1,19 @@
+[
+  {
+    "tag": "note",
+    "pitch": "c3",
+    "start": 0,
+    "dur": 250
+  },
+  {
+    "tag": "rest",
+    "start": 250,
+    "dur": 500
+  },
+  {
+    "tag": "note",
+    "pitch": "g4",
+    "start": 750,
+    "dur": 500
+  }
+]

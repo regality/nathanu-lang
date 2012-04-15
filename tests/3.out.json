@@ -1,0 +1,26 @@
+[
+  {
+    "tag": "note",
+    "pitch": 48,
+    "start": 0,
+    "dur": 250
+  },
+  {
+    "tag": "note",
+    "pitch": 67,
+    "start": 0,
+    "dur": 500
+  },
+  {
+    "tag": "note",
+    "pitch": 50,
+    "start": 500,
+    "dur": 500
+  },
+  {
+    "tag": "note",
+    "pitch": 65,
+    "start": 500,
+    "dur": 250
+  }
+]
