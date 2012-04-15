@@ -1,4 +1,3 @@
-// dammit all to hell I wish nathan would have told me to save that code
 var assert = require('assert');
 
 function compile(mus, notes) {

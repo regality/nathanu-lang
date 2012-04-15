@@ -19,47 +19,23 @@ function errorz(msg) {
   console.log(msg.red);
 }
 
-var files = fs.readdirSync(__dirname + '/tests');
-files.sort(function(a,b) {
-  return parseInt(a) - parseInt(b);
-});
+var files = fs.readdirSync(__dirname + '/tests/inputs');
 
-for (var i = 0; i < files.length; i += 1) {
-  if (files[i].match(/\.in\./)) {
-    files[i] = {
-      input: files[i],
-      output: files[i + 1]
-    };
-  } else {
-    files[i] = {
-      output: files[i],
-      input: files[i + 1]
-    };
-  }
-  files.splice(i + 1, 1);
-};
-
-var re = /^(\d+).(in|out).(\w+)$/;
+var re = /^(.+)\.(.+)\.(\w+)$/;
 var passCount = 0;
 files.forEach(function(test) {
-  var m = test.input.match(re);
-  var num = m[1];
-  var inputType = m[3];
-  var outputType = test.output.match(re)[3];
-  var name = "number " + num;
-  var method = "compile";
+  var m = test.match(re);
+  var name = m[1];
+  var method = m[2];
+  var type = m[3];
 
-  var input = fs.readFileSync(__dirname + "/tests/" + test.input);
-  var output = fs.readFileSync(__dirname + "/tests/" + test.output);
-  if (inputType === 'json') {
+  var input = fs.readFileSync(__dirname + "/tests/inputs/" + test);
+  var output = fs.readFileSync(__dirname + "/tests/outputs/" + name + "." + type);
+  if (type === 'json') {
     input = JSON.parse(input);
-    name = input.name || name;
-    method = input.method || method;
-    input = input.input || input;
-  }
-  if (outputType === 'json') {
     output = JSON.parse(output);
   }
+  name = name.replace(/-/g, " ");
 
   try {
     var actual = compile[method](input);
@@ -77,8 +53,7 @@ files.forEach(function(test) {
   }
 });
 
-console.log();
-console.log("====================");
+info("====================");
 if (passCount == files.length) {
   pass("All " + files.length + " tests passed!");
 } else {

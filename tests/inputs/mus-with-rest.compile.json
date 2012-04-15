@@ -1,0 +1,20 @@
+{
+  "tag": "seq",
+  "left": {
+    "tag": "note",
+    "pitch": "c3",
+    "dur": 250
+  },
+  "right": {
+    "tag": "seq",
+    "left": {
+      "tag": "rest",
+      "dur": 500
+    },
+    "right": {
+      "tag": "note",
+      "pitch": "g4",
+      "dur": 500
+    }
+  }
+}
