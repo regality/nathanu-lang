@@ -6,7 +6,11 @@ function compile(mus, notes) {
     notes = [];
     setStartTimes(mus);
   }
-  if (mus.tag === 'seq' || mus.tag == 'par') {
+  if (mus.tag === "repeat") {
+    for (var i = 0; i < mus.count; ++i) {
+      compile(mus.section, notes);
+    }
+  } else if (mus.tag === 'seq' || mus.tag == 'par') {
     compile(mus.left, notes);
     compile(mus.right, notes);
   } else {

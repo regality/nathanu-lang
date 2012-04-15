@@ -1,0 +1,13 @@
+{
+  "name": "simple repeat",
+  "method": "compile",
+  "input": {
+    "tag": "repeat",
+    "count": 3,
+    "section": {
+      "tag": "note",
+      "pitch": "c4",
+      "dur": 250
+    }
+  }
+}

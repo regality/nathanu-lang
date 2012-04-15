@@ -7,6 +7,10 @@ function pass(msg) {
   console.log(msg.green);
 }
 
+function info(msg) {
+  console.log(msg.blue);
+}
+
 function fail(msg) {
   console.log(msg.red.bold.inverse);
 }
@@ -58,16 +62,18 @@ files.forEach(function(test) {
   }
 
   try {
-    assert.deepEqual(
-      compile[method](input),
-      output
-    );
+    var actual = compile[method](input);
+    assert.deepEqual(actual, output);
     pass("Passed test " + name + ".");
     ++passCount;
   } catch (e) {
     fail("Failed test " + name + ".");
-    errorz(e.message);
-    errorz(e.stack);
+    info("expected: " + JSON.stringify(output));
+    info("actual:   " + JSON.stringify(actual));
+    if (e.message) {
+      errorz(e.message);
+      errorz(e.stack);
+    }
   }
 });
 
