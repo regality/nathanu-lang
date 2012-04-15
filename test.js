@@ -1,7 +1,7 @@
 var fs = require('fs')
   , assert = require('assert')
   , colors = require('colors')
-  , compile = require('./compiler');
+  , methods = require('./index');
 
 function pass(msg) {
   console.log(msg.green);
@@ -38,7 +38,7 @@ files.forEach(function(test) {
   name = name.replace(/-/g, " ");
 
   try {
-    var actual = compile[method](input);
+    var actual = methods[method](input);
     assert.deepEqual(actual, output);
     pass("Passed test " + name + ".");
     ++passCount;
